@@ -40,4 +40,14 @@ html,
 body {
   @extend .max-height;
 }
+
+button {
+  cursor: pointer;
+  transition: 0.2s all;
+  &:hover {
+    background-color: #86c0e6 !important;
+    color: #ffffff !important;
+    text-shadow: 0px 0px 3px #000000;
+  }
+}
 </style>

@@ -1,22 +1,28 @@
 <template>
   <div class="home">
     <p class="title">Sua seleção especial</p>
-    <span
-      class="products"
-      v-for="(product, index) in products"
-      :class="{'no-margin': ((index+1) % 4) == 0}"
-    >
-      <Product :product="product" />
 
-      <br v-if="((index+1) % 4) == 0" />
-    </span>
+    <transition-group name="fade">
+      <span
+        class="products"
+        v-for="(product, index) in products"
+        :key="product"
+        :class="{'no-margin': ((index+1) % 4) == 0}"
+      >
+        <Product :product="product" />
+
+        <br v-if="((index+1) % 4) == 0" />
+      </span>
+    </transition-group>
 
     <button class="btn-more-products" @click="getMoreProducts">Ainda mais produtos aqui!</button>
+    <Newsletter />
   </div>
 </template>
 
 <script>
 import Product from "./Product.vue";
+import Newsletter from "./Newsletter.vue";
 
 const axios = require("axios");
 
@@ -30,7 +36,8 @@ export default {
     };
   },
   components: {
-    Product
+    Product,
+    Newsletter
   },
   methods: {
     getMoreProducts: function() {
@@ -42,7 +49,7 @@ export default {
     }
   },
   created: function() {
-      this.getMoreProducts();
+    this.getMoreProducts();
   }
 };
 </script>
@@ -52,7 +59,7 @@ export default {
   text-align: center;
   color: #888888;
   font-size: 18px;
-  padding: 48.67px 0 50px 0;
+  padding-top: 48.67px;
 
   .title {
     padding-bottom: 50px;
@@ -76,6 +83,15 @@ export default {
     border-radius: 4px;
     background-color: #ffffff;
     font-size: 16px;
+    margin-bottom: 164px;
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
   }
 }
 </style>
