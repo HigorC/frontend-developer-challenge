@@ -37,9 +37,7 @@ html {
   height: calc(100vh - 186.64px);
 }
 html,
-body,
-.content,.home {
+body {
   @extend .max-height;
-  // height: 100%;
 }
 </style>
