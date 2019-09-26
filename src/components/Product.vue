@@ -1,12 +1,12 @@
 <template>
   <div class="product">
-    <img src="//imagens.pontofrio.com.br/Control/ArquivoExibir.aspx?IdArquivo=6584703" alt="aaa" />
+    <img :src="product.image" alt="Image" />
     <div class="description">
-      <p class="name">Nome</p>
-      <p class="about">descricao</p>
-      <p class="old-price">De: R$213</p>
-      <p class="price">Por: R$ 19,99</p>
-      <p class="parcel">ou 4x 9989</p>
+      <p class="name">{{product.name}}</p>
+      <p class="about">{{product.description}}</p>
+      <p class="old-price">De: R${{product.oldPrice}}</p>
+      <p class="price">Por: R${{product.price}}</p>
+      <p class="parcel">ou {{product.installments.count}}x de R${{product.installments.value}}</p>
     </div>
     <button>Comprar</button>
   </div>
@@ -14,7 +14,10 @@
 
 <script>
 export default {
-  name: "Product"
+  name: "Product",
+  props: {
+    product: Object
+  }
 };
 </script>
 
@@ -22,6 +25,10 @@ export default {
 .product {
   height: 350px;
   width: 201px;
+
+  display: inline-block;
+  margin-bottom: 39px;
+
   img {
     width: 200px;
     height: 150px;
@@ -32,7 +39,7 @@ export default {
     border-radius: 4px;
     width: 100%;
     border: 1px solid #707070;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     font-size: 16px;
     padding: 6px 0;
     color: #888888;

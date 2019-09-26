@@ -38,8 +38,8 @@ html {
 }
 html,
 body,
-#app,
-.content {
+.content,.home {
   @extend .max-height;
+  // height: 100%;
 }
 </style>
