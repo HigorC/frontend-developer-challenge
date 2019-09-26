@@ -44,10 +44,11 @@ body {
 button {
   cursor: pointer;
   transition: 0.2s all;
+
   &:hover {
-    background-color: #86c0e6 !important;
+    background-color: #50d2f7 !important;
     color: #ffffff !important;
-    text-shadow: 0px 0px 3px #000000;
+    text-shadow: 0px 0px 3px #5f5f5f;
   }
 }
 </style>
